@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+    <h2>Dashboard</h2>
+    <p>Welcome, @Context.Session.GetString("Username")</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white p-3">
+                <h5>Total Products</h5>
+                <h3>@ViewBag.TotalProducts</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white p-3">
+                <h5>Total Stock Quantity</h5>
+                <h3>@ViewBag.TotalQuantity</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white p-3">
+                <h5>Total Inventory Value</h5>
+                <h3>$@ViewBag.TotalValue</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a href="/Products" class="btn btn-info">Manage Products</a>
+            <a href="/Stock" class="btn btn-success">Manage Stock</a>
+            <a href="/Auth/Logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</div>

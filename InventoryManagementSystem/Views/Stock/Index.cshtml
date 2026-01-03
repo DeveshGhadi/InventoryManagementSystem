@@ -1,0 +1,82 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Product>
+@{
+    ViewData["Title"] = "Stock Management";
+}
+
+<div class="container mt-4">
+    <h2>Stock Management</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Current Quantity</th>
+                <th>Unit Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductName</td>
+                    <td>@product.Category?.CategoryName</td>
+                    <td>@product.Quantity</td>
+                    <td>$@product.UnitPrice</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#stockModal" onclick="setProduct(@product.ProductId, '@product.ProductName')">Update Stock</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Dashboard" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="stockModal" tabindex="-1" aria-labelledby="stockModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="stockModalLabel">Update Stock for <span id="productNameSpan"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Stock/UpdateStock">
+                <div class="modal-body">
+                    <input type="hidden" id="productId" name="productId" value="">
+
+                    <div class="mb-3">
+                        <label class="form-label">Transaction Type</label>
+                        <select id="type" name="type" class="form-control" required>
+                            <option value="In">Stock In (Add)</option>
+                            <option value="Out">Stock Out (Remove)</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control" required min="1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update Stock</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setProduct(id, name) {
+        document.getElementById('productId').value = id;
+        document.getElementById('productNameSpan').textContent = name;
+        document.getElementById('type').value = 'In';
+        document.getElementById('quantity').value = '';
+    }
+</script>

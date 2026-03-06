@@ -10,7 +10,7 @@ The system allows an administrator and users to:
 - View a dashboard with inventory statistics such as total products, total stock quantity, and total inventory value
 - Track stock transactions and movements
 
-This project demonstrates CRUD operations, session-based authentication, role-based authorization, and a responsive user interface, making it suitable for academic projects and small to medium-sized inventory systems.
+This project demonstrates CRUD operations, session-based authentication, role-based authorization, and a responsive user interface, making it suitable for academic projects and small to medium-sized inventory systems. change for the demo commit purpose.
 
 ---
 
@@ -214,4 +214,6 @@ The dashboard automatically calculates:
 - **Total Products**: Count of all products in inventory
 - **Total Stock Quantity**: Sum of quantities across all products
 - **Total Inventory Value**: Total quantity × Unit price for all products
+
+
 

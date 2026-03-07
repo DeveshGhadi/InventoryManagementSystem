@@ -10,7 +10,7 @@ The system allows an administrator and users to:
 - View a dashboard with inventory statistics such as total products, total stock quantity, and total inventory value
 - Track stock transactions and movements
 
-This project demonstrates CRUD operations, session-based authentication, role-based authorization, and a responsive user interface, making it suitable for academic projects and small to medium-sized inventory systems. This change is for demo purpose.This denotes the change of featurev2.
+This project demonstrates CRUD operations, session-based authentication, role-based authorization, and a responsive user interface, making it suitable for academic projects and small to medium-sized inventory systems. 
 
 ---
 
